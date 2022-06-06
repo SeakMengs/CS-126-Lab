@@ -7,22 +7,18 @@ using namespace std;
 
 int main()
 {
-   /* string a;
-    cout << "Enter a string:";
-    getline(cin, a);
-    reverse(a.begin(), a.end());
-    cout << "Reverse order: " << a; */
     string a;
     string b;
-    char c[] = {};
     cout << "Enter a string: ";
     getline(cin, a);
     b = a;
-    //strcpy(c, a.c_str());
+    //reverse input
     reverse(a.begin(), a.end());
+    //cout input in reverse
     cout << "Reverse order: " << a << endl;
-    a.erase(remove(a.begin(), a.end(), ' '), a.end()); 
-    b.erase(remove(b.begin(), b.end(), ' '), b.end()); 
+    //erase space in a and b in order to compare
+    a.erase(remove(a.begin(), a.end(), ' ')); 
+    b.erase(remove(b.begin(), b.end(), ' ')); 
     if(a == b)
     {
         cout << "The order of characters in both strings are the same";

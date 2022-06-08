@@ -1,3 +1,4 @@
+//Create functions count alpha
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -74,7 +75,7 @@ int meng_special(string str)
     return newstr;
 } */
 
-string meng_reverse(string str)
+/*string meng_reverse(string str)
 {
     int len = str.length();
   int n = len-1;
@@ -84,7 +85,16 @@ string meng_reverse(string str)
     n = n-1;
   }
   return str;
-} 
+} */
+string meng_reverse(string str)
+{
+string rev;
+for (int i = str.length() -1 ; i >= 0; i--)
+{
+    rev = rev + str[i];
+}
+    return rev;
+}
 
 int main()
 {

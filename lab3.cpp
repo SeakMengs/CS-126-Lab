@@ -26,7 +26,7 @@ cout << "Original function output is: " << s1 << endl;
 //Make string s1 = "Hell" again in other to compare
 s1 = "Hell";  
 //test with array using my functin
-meng_pushback(s2[4], s1);
+meng_pushback('o', s1);
 cout << "My function output is: " << s1 << endl;
 return 0;     
 }

@@ -1,4 +1,4 @@
-//Struct 
+//Struct (build student input and display student information)
 #include <iostream>
 using namespace std;
 
@@ -40,10 +40,12 @@ student input(student& s)
     return s;
 }
 //convert the birthday specific month/day/year to age;
-int convert_age(int month, int day, int year)
+/*int convert_age(int month, int day, int year)
 {
     int age;
-    age = 2022 - year;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    age = 1900 + ltm->tm_year - year;
     if (month > 1 && month < 7)
     {
         if (month == 2 && day > 28)
@@ -67,6 +69,18 @@ int convert_age(int month, int day, int year)
         }
     }
     return age;
+} */
+int convert_age(int month, int day, int year)
+{
+    struct tm date = {0};
+    date.tm_year = year-1900;
+    date.tm_mon  = month-1;
+    date.tm_mday = day;
+    time_t normal = mktime(&date);
+    time_t current;
+    time(&current);
+    int age = (difftime(current, normal) + 86400L/2) / 86400L;
+    return age/365;
 }
 
 int main()

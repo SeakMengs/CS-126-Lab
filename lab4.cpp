@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-#define maxx 3
+#define maxx 5
 string major[3];
 struct student
 {

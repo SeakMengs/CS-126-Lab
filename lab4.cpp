@@ -1,22 +1,28 @@
 //Struct (build student input and display student information)
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-#define maxx 5
+#define maxx 2
 string major[3];
 struct student
 {
     string fname;
     string lname;
+    string name;
     int id;
     int studentgrade;
     int birthday;
     int birthmonth;
     int birthyear;
+    string day;
+    string month;
+    string year;
+    string cakeday;
     string courses[3] = {"CS", "MIS", "BUS"};
 } studentinfo[maxx];
 //struct function
-student input(student& s)
+void input()
 {
 int n = 0;
     for (int i = 0; i < maxx; i++)
@@ -25,21 +31,27 @@ int n = 0;
     getline (cin, studentinfo[i].fname);
     cout << "Enter last name: ";
     getline (cin, studentinfo[i].lname);
+    studentinfo[i].name = studentinfo[i].fname + " " + studentinfo[i].lname;
     cout << "Enter birthmonth: ";
     cin >> studentinfo[i].birthmonth;
+    studentinfo[i].month = to_string(studentinfo[i].birthmonth);
     cout << "Enter birthday: ";
     cin >> studentinfo[i].birthday;
+    studentinfo[i].day =  to_string(studentinfo[i].birthday);
     cout << "Enter birthyear: ";
     cin >> studentinfo[i].birthyear;
+    studentinfo[i].year = to_string(studentinfo[i].birthyear);
+    studentinfo[i].cakeday = studentinfo[i].month + "/" + studentinfo[i].day + "/" + studentinfo[i].year;
     cout << "Enter student id: ";
     cin >> studentinfo[i].id;
-    cout << "Enter Major CS = 1, MIS = 2, BUS = 3" << endl;
+    cout << "Enter Major [1]CS [2]MIS [3]BUS" << endl;
     cin >> n;
     major[i]= studentinfo[i].courses[n - 1];
     cin.ignore();
     }
-    return s;
 }
+
+//Credit to https://thecleverprogrammer.com/2021/08/12/age-calculator-using-c/
 //convert the birthday specific month/day/year to age;
 int convert_age(int month, int day, int year)
 {
@@ -56,18 +68,34 @@ int convert_age(int month, int day, int year)
 //display info
 void output(int i)
 {
-    cout << "Name: " << studentinfo[i].fname << " " << studentinfo[i].lname << "\tBirthday: " << studentinfo[i].birthmonth << "/" 
-    << studentinfo[i].birthday << "/" << studentinfo[i].birthyear << "\tAge: "
-    << convert_age(studentinfo[i].birthmonth, studentinfo[i].birthday, studentinfo[i].birthyear) << 
-    "\tMajor: " <<  major[i] << "\tStudent id: " << studentinfo[i].id << endl;
+    cout << left << setw(20) << studentinfo[i].name
+         << left << setw(15) << studentinfo[i].cakeday
+         << left << setw(7) << convert_age(studentinfo[i].birthmonth, studentinfo[i].birthday, studentinfo[i].birthyear) 
+         << left << setw(15) << studentinfo[i].id
+         << left << setw(5) << major[i] << endl;
 }
 
 int main()
 {
-    input(studentinfo[0]);
+    input();
+    /*
+      setw() is used to change the width of the output field.
+      For example, if we are assigning the width as 4 and printing the word ‘one’,
+      which is a three-letter word, the output will add one blank space to the result to make it equal to the width.
+      setfill() takes one character as the argument and uses it as the fill character.
+      Output: "**one" 
+      By default, the printing word is added to the right side but we can also use std::left to print it on left.
+      Output: "one**" 
+      Credit: https://www.codevscolor.com/c-plus-plus-print-data-table
+    */
+    cout << setfill('_') << setw(62) << "_" << endl;
+    cout << setfill(' ');
+    cout << left << setw(20) << "NAME" << left << setw(15) << "Birthday" << left << setw(7) << "AGE" << left << setw(15) << "STUDENT ID" << left << setw(5) << "MAJOR"<< endl;
     for (int i = 0; i < maxx; i++)
     {
     output(i);
     }
+    cout << setfill('_') << setw(62) << "_" << endl;
+    cout << setfill(' ');
     return 0;
 }

@@ -3,14 +3,14 @@
 #include <iomanip>
 using namespace std;
 
-#define maxx 5
+#define maxx 1
 string major[3];
 struct student
 {
     string fname;
     string lname;
     string name;
-    int id;
+    string id;
     int studentgrade;
     int birthday;
     int birthmonth;

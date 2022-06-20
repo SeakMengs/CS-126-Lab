@@ -68,11 +68,12 @@ int convert_age(int month, int day, int year)
 //display info
 void output(int i)
 {
-    cout << left << setw(20) << studentinfo[i].name
-         << left << setw(15) << studentinfo[i].cakeday
-         << left << setw(7) << convert_age(studentinfo[i].birthmonth, studentinfo[i].birthday, studentinfo[i].birthyear) 
-         << left << setw(15) << studentinfo[i].id
-         << left << setw(5) << major[i] << endl;
+    cout << "|" << left << setw(5) << i << "|"
+         << left << setw(20) << studentinfo[i].name << "|"
+         << left << setw(15) << studentinfo[i].cakeday << "|"
+         << left << setw(7) << convert_age(studentinfo[i].birthmonth, studentinfo[i].birthday, studentinfo[i].birthyear) << "|"
+         << left << setw(15) << studentinfo[i].id << "|"
+         << left << setw(5) << major[i]  << "|" << endl;
 }
 
 int main()
@@ -88,14 +89,14 @@ int main()
       Output: "one**" 
       Credit: https://www.codevscolor.com/c-plus-plus-print-data-table
     */
-    cout << setfill('_') << setw(62) << "_" << endl;
+    cout << setfill('-') << setw(74) << "-" << endl;
     cout << setfill(' ');
-    cout << left << setw(20) << "NAME" << left << setw(15) << "Birthday" << left << setw(7) << "AGE" << left << setw(15) << "STUDENT ID" << left << setw(5) << "MAJOR"<< endl;
+    cout << left << setw(5) << "|N.O" << left << setw(20) << " |NAME" << left << setw(15) << "  |Birthday" << left << setw(7) << "   |AGE" << left << setw(15) << "    |STUDENT ID" << left << setw(5) << "     |MAJOR|"<< endl;
     for (int i = 0; i < maxx; i++)
     {
     output(i);
     }
-    cout << setfill('_') << setw(62) << "_" << endl;
+    cout << setfill('-') << setw(74) << "-" << endl;
     cout << setfill(' ');
     return 0;
 }

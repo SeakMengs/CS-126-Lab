@@ -3,7 +3,7 @@
 #include <iomanip>
 using namespace std;
 
-#define maxx 2
+#define maxx 5
 string major[3];
 struct student
 {
@@ -53,7 +53,7 @@ int n = 0;
 
 //Credit to https://thecleverprogrammer.com/2021/08/12/age-calculator-using-c/
 //convert the birthday specific month/day/year to age;
-int convert_age(int month, int day, int year)
+/*int convert_age(int month, int day, int year)
 {
     struct tm date = {0};
     date.tm_year = year-1900;
@@ -64,6 +64,15 @@ int convert_age(int month, int day, int year)
     time(&current);
     int age = (difftime(current, normal) + 86400L/2) / 86400L;
     return age/365;
+} */
+int convert_age(int month, int day, int year)
+{
+    int cage = 2022 - year;
+    int cmonth = 12 - month;
+    int cday = 30 - day;
+    int agebyday = (cage * 365) + (12*30) + cday;
+    int age = agebyday / 365;
+    return age - 2;
 }
 //display info
 void output(int i)
@@ -74,7 +83,8 @@ void output(int i)
          << left << setw(7) << convert_age(studentinfo[i].birthmonth, studentinfo[i].birthday, studentinfo[i].birthyear) << "|"
          << left << setw(15) << studentinfo[i].id << "|"
          << left << setw(5) << major[i]  << "|" << endl;
-    cout << setfill('-') << setw(74) << "-" << "" << endl;
+    cout << setfill('-') << setw(74) << "" << endl;
+    cout << setfill(' ');
 }
 
 int main()
@@ -90,8 +100,11 @@ int main()
       Output: "one**" 
       Credit: https://www.codevscolor.com/c-plus-plus-print-data-table
     */
-    cout << setfill('-') << setw(74) << "-" << "" << endl;
+    cout << setfill('-') << setw(74) << "" << endl;
+    cout << setfill(' ');
     cout << left << setw(5) << "|N.O" << left << setw(20) << " |NAME" << left << setw(15) << "  |Birthday" << left << setw(7) << "   |AGE" << left << setw(15) << "    |STUDENT ID" << left << setw(5) << "     |MAJOR|"<< endl;
+    cout << setfill('-') << setw(74) << "" << endl;
+    cout << setfill(' ');
     for (int i = 0; i < maxx; i++)
     {
     output(i);

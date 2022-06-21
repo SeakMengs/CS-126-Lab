@@ -11,6 +11,7 @@ struct student
     string lname;
     string name;
     string id;
+    //string birthmonthstring[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     int studentgrade;
     int birthday;
     int birthmonth;
@@ -67,11 +68,16 @@ int n = 0;
 } */
 int convert_age(int month, int day, int year)
 {
+    int age = 0;
     int cage = 2022 - year;
     int cmonth = 12 - month;
+    if (month < 7)
+    {
+        age + 1;
+    }
     int cday = 30 - day;
     int agebyday = (cage * 365) + (12*30) + cday;
-    int age = agebyday / 365;
+    age = agebyday / 365;
     return age - 2;
 }
 //display info

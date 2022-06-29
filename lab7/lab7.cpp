@@ -9,14 +9,11 @@ using namespace std;
 int main()
 {
 string word[maxx];
-string temp;
-string phrase;
+string temp = "";
 string tempword;
+string phrase;
 int countword = 1;
-int length = 0;
 fstream myfile, newfile;
-//cout << "Enter the phrase: ";
-//getline(cin, word);
 myfile.open("CountWord.txt", ios::in);
 if (myfile.is_open())
 {
@@ -26,48 +23,35 @@ if (myfile.is_open())
     }
     myfile.close();
 }
-length = phrase.length(); 
-for (int i = 0; i < length; i++)
+for (int i = 0; i < phrase.length(); i++)
 {
-    if ((phrase[i] >= 'a' && phrase[i] <= 'z') || (phrase[i] >= 'A' && phrase[i] <= 'Z') || (phrase[i] = ' ')) 
-    {
-    temp = temp + phrase[i];
-    }
-}
-for (int i = 0; i < temp.length(); i++)
-{
-    if (isspace(temp[i]))
+    if (isspace(phrase[i]))
     {
         countword++;
     }
-    if (isspace(temp[length - 1]))
+    if (isspace(phrase[phrase.length() - 1]))
     {
         countword = countword - 1;
     }
 }
-cout << countword;
-int testcount = 0;
-newfile.open("CountWordFixed.txt", ios::out);
-if (newfile.is_open())
+cout << countword << endl;
+myfile.open("CountWord.txt", ios::in);
+if (myfile.is_open())
 {
-    newfile << temp;
-    myfile.close();
-}
-newfile.open("CountWordFixed.txt", ios::in);
-if (newfile.is_open())
+for (int j = 0; j < countword; j++)
 {
-    /*for (int i = 0; i < countword; i++)
-    {
-        newfile >> word[i];
-        cout << word[i] << endl;
-    } */
-    while (newfile >> tempword)
-    {
-        cout << tempword;
-        word[testcount] = tempword;
-        cout << word[testcount];
-        testcount++;
+    myfile >> word[j];
+    tempword = word[j];
+    for (int i = 0; i < tempword.size(); i++) {
+        if ((tempword[i] >= 'a' && tempword[i] <= 'z') || (tempword[i] >= 'A' && tempword[i] <= 'Z')) 
+        {
+            temp = temp + tempword[i];
+        }
     }
+    word[j] = temp;
+    temp = "";
+    cout << "Output String: " << word[j] << endl;
+}
     myfile.close();
 }
 

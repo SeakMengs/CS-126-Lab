@@ -7,6 +7,42 @@ using namespace std;
 #define maxx 1000
 
 //remove the last special until last character is a character type
+/* string remove_last_special(string phrase)
+{
+    string temp = phrase;
+    string templine= "";
+    int length = phrase.length();
+    for (int i = length; i > 0; i--)
+    {
+        if (isalpha(phrase[i]))
+        {
+            break;
+        } else
+        {
+            for (int j = 0; j < temp.length(); j++)
+            {
+                templine += temp[j];
+            }
+            temp = templine;
+            templine = "";
+        }
+    }
+    return temp;
+} */
+string keep_char_space(string phrase)
+{
+    string newphrase;
+    int length = phrase.length();
+    for (int i = 0; i < length; i++)
+    {
+        if (isalpha(phrase[i]) || isspace(phrase[i]))
+        {
+            newphrase += phrase[i];
+        }
+    }
+    return newphrase;
+}
+
 string remove_last_special(string phrase)
 {
     string temp = phrase;
@@ -28,7 +64,7 @@ string remove_last_special(string phrase)
         }
     }
     return temp;
-}
+} 
 
 //check how many words
 int word_count (string nolastspecial)
@@ -74,6 +110,7 @@ int main()
 {
     fstream file, newfile;
     string phrase;
+    string removenum;
     string nolastspecial;
     string removespecial;
     string tempword;
@@ -91,8 +128,11 @@ int main()
         }
         file.close();
     }
+    //remove number and character beside space and alpha
+    removenum = keep_char_space(phrase);
+    cout << "remove num: " << removenum << endl;
     //remove the last special until last character is a character type
-    nolastspecial = remove_last_special(phrase);
+    nolastspecial = remove_last_special(removenum);
     //check how many words
     wordcount = word_count(nolastspecial);
 
@@ -118,11 +158,26 @@ for (int j = 0; j < wordcount; j++)
         }
     }
     word[j] = temp;
-    removespecial += word[j] + " ";
+    if (j < wordcount - 1)
+    {
+        removespecial += word[j] + " ";
+    } else if (j = wordcount - 1)
+    {
+        removespecial += word[j];
+    }
     temp = "";
     } 
     newfile.close();
 }
+newfile.open("CountWordFixed.txt", ios::out);
+if (newfile.is_open())
+{
+    newfile << removespecial;
+    newfile.close();
+}
+cout << removespecial << endl;
+//count word again
+wordcount = word_count(removespecial);
 //compare word to find number of occurrence
 occurences = compare(word, wordcount);
 cout << "Number of words: " << wordcount << endl;

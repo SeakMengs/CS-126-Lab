@@ -176,7 +176,7 @@ if (newfile.is_open())
     newfile.close();
 }
 //count word again
-wordcount = word_count(removespecial) - 1;
+wordcount = word_count(removespecial);
 //compare word to find number of occurrence
 occurences = compare(word, wordcount);
 cout << "Number of words: " << wordcount << endl;

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include <algorithm>
+#include <iomanip>
 using namespace std;
 
 #define maxx 1000
@@ -146,6 +147,7 @@ int main()
     if (newfile.is_open())
     {
         newfile << strconcat;
+        newfile << endl;
         newfile.close();
     }
     //count words aagain
@@ -185,8 +187,15 @@ int main()
                 occuredcount++;
             }
         }
-        cout << "" << word[i] << " occurs " << occuredcount << " times.\n";
+        cout << left << setw(10) << word[i] << " occurs " << occuredcount << " times.\n";
         totaloccurences += occuredcount;
+        newfile.open("CountWordFixed.txt", ios::app);
+        if (newfile.is_open())
+        {
+            newfile << endl;
+            newfile << left << setw(10)<< word[i] << " occurs " << occuredcount << " times.";
+            newfile.close();
+        }
     }
 /*
     for (int i = 0; i < wordcount; i++)
@@ -214,6 +223,14 @@ int main()
     } */
     //Output:
     cout << "Number of words: " << wordcount << endl;
-    cout << "Number of words: " << totaloccurences << endl;
+    //cout << "Number of words: " << totaloccurences << endl;
+    newfile.open("CountWordFixed.txt", ios::app);
+    if (newfile.is_open())
+    {
+        newfile << endl << endl;
+        newfile << "Number of words: " << wordcount;
+        //newfile << "Number of words: " << totaloccurences;
+        newfile.close();
+    }
     return 0;
 }

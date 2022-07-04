@@ -177,14 +177,14 @@ int main()
         }
     }
     //? Output:
-    cout << "Total words: " << totalword << endl;
-    cout << "Number of words: " << wordcount << endl;
+    cout << "Number of words: " << totalword << endl;
+    cout << "Total words: " << wordcount << endl;
     newfile.open("CountWordFixed.txt", ios::app);
     if (newfile.is_open())
     {
         newfile << endl << endl;
-        newfile << "Total words: " << totalword << endl;
-        newfile << "Number of words: " << wordcount << endl;
+        newfile << "Number of words: " << totalword << endl;
+        newfile << "Total words: " << wordcount << endl;
         //newfile << "Number of words: " << totaloccurences;
         newfile.close();
     }

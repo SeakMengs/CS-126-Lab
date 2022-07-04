@@ -57,36 +57,6 @@ int word_count (string phrase)
     return countword;
 }
 
-//compare word
-/* int compare(string word[], int wordcount)
-{
-    int occurence = 0;
-    string temp;
-    string tempword;
-    //convert words into small letter to compare
-    for (int i = 0; i < wordcount; i++)
-    {
-        temp = word[i];
-        transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
-        word[i] = temp;
-        temp = "";
-    }
-    //compare word by word
-    for (int i = 0; i < wordcount; i++)
-    {
-        tempword = word[i];
-        occurence -= 1;
-        for (int j = 0; j < wordcount; j++)
-        {
-            if (tempword == word[j])
-            {
-                occurence++;
-            }
-        }
-    } 
-    return occurence;
-}  */
-
 int main()
 {
     fstream file, newfile;
@@ -156,7 +126,7 @@ int main()
     //occurence = compare(word, wordcount);
     string tempcompare;
     string tempwordcompare;
-    int testedcount = 0;
+    int checkwordcount = 0;
     int totaloccurences = 0;
     for (int i = 0; i < wordcount; i++)
     {
@@ -166,29 +136,35 @@ int main()
         tempcompare = "";
     }
     //system("cls");
+    //loop to compare words
     for (int i = 0; i < wordcount; i++)
     {
         bool flag = false;
         int occuredcount = 0;
-        
-        for (int j = 0; j < testedcount; j++)
+        //loop to check words in array of word[i] is it = wordoccured in index j 
+        //if the check is true then make the flag true
+        for (int j = 0; j < checkwordcount; j++)
         {
             if(word[i] == wordoccured[j]) {
                 flag = true;
             }
         }
-        if(flag) continue;
-
-        wordoccured[testedcount] = word[i];
-        testedcount++;
+        //if flag true then dont continue
+        //but if the flag false continue the below line
+        if(flag) 
+        continue;
+        wordoccured[checkwordcount] = word[i];
+        checkwordcount++;
         for (int j = 0; j < wordcount; j++)
         {
             if(word[i] == word[j]) {
                 occuredcount++;
             }
         }
+        //cout the word occurs
         cout << left << setw(10) << word[i] << " occurs " << occuredcount << " times.\n";
         totaloccurences += occuredcount;
+        //write the cout into a file
         newfile.open("CountWordFixed.txt", ios::app);
         if (newfile.is_open())
         {
@@ -197,30 +173,6 @@ int main()
             newfile.close();
         }
     }
-/*
-    for (int i = 0; i < wordcount; i++)
-    {
-        tempcompare = word[i];
-        transform(tempcompare.begin(), tempcompare.end(), tempcompare.begin(), ::tolower);
-        word[i] = tempcompare;
-        tempcompare = "";
-    }
-    system("cls");
-    //compare word by word
-    for (int i = 0; i < wordcount; i++)
-    {
-        occurence = 0;
-        tempwordcompare = word[i];
-        for (int j = 0; j < wordcount; j++)
-        {
-            if (tempwordcompare != wordoccured[j])
-            {
-                wordoccured[i] = word[i];
-                break;
-            }
-        }
-        cout << wordoccured[i] << " occure: " << occurence << " time(s)" << endl;
-    } */
     //Output:
     cout << "Number of words: " << wordcount << endl;
     //cout << "Number of words: " << totaloccurences << endl;

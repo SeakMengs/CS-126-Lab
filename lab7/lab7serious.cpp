@@ -7,14 +7,14 @@ using namespace std;
 
 #define maxx 1000
 
-//remove special character, number, anything beside character
+//? remove special character, number, anything beside character
 string keep_char_space(string phrase)
 {
     string newphrase;
     string templine;
     string temp;
     int length = phrase.length();
-    //remove special character
+    //? remove special character
     for (int i = 0; i < length; i++)
     {
         if (isalpha(phrase[i]) || phrase[i] == ' ')
@@ -22,7 +22,7 @@ string keep_char_space(string phrase)
             newphrase += phrase[i];
         } 
     }
-    //remove last space in from the last sentence, if last sentence is a character break, else check until first condition true;
+    //? remove last space in from the last sentence, if last sentence is a character break, else check until first condition true;
     length = newphrase.length();
     temp = newphrase;
     for (int i = temp.length(); i > 0; i--)
@@ -43,7 +43,7 @@ string keep_char_space(string phrase)
     }
     return temp;
 }
-//count words
+//? count words
 int word_count (string phrase)
 {
     int countword = 1;
@@ -68,7 +68,7 @@ int main()
     string strconcat;
     int occurence = 0;
     int wordcount = 0;
-    //open and read from countword.txt to string phrase;
+    //? open and read from countword.txt to string phrase;
     file.open("CountWord.txt", ios::in);
     if (file.is_open())
     {
@@ -78,18 +78,18 @@ int main()
         }
         file.close();
     }
-    //remove special character, number, anything beside character
+    //? remove special character, number, anything beside character
     phrase = keep_char_space(phrase);
-    //count the words
+    //? count the words
     wordcount = word_count(phrase);
-    //open and write in new file
+    //? open and write in new file
     newfile.open("CountWordFixed.txt", ios::out);
     if (newfile.is_open())
     {
         newfile << phrase;
         newfile.close();
     }
-    //Open and get word by word from countwordfixed.txt
+    //? Open and get word by word from countwordfixed.txt
     newfile.open("CountWordFixed.txt", ios::in);
     if (newfile.is_open())
     {
@@ -113,7 +113,7 @@ int main()
             } 
         newfile.close();
     }
-    //Write strconcat to newfile
+    //? Write strconcat to newfile
     newfile.open("CountWordFixed.txt", ios::out);
     if (newfile.is_open())
     {
@@ -121,9 +121,9 @@ int main()
         newfile << endl;
         newfile.close();
     }
-    //count words aagain
+    //?count words aagain
     wordcount = word_count(strconcat) - 1;
-    //Compare words
+    //?Compare words
     //occurence = compare(word, wordcount);
     string tempcompare;
     string tempwordcompare;
@@ -136,22 +136,22 @@ int main()
         word[i] = tempcompare;
         tempcompare = "";
     }
-    //system("cls");
-    //loop to compare words
+    system("cls");
+    //? loop to compare words
     for (int i = 0; i < wordcount; i++)
     {
         bool flag = false;
         int occuredcount = 0;
-        //loop to check words in array of word[i] is it = wordoccured in index j 
-        //if the check is true then make the flag true
+        //? loop to check words in array of word[i] is it = wordoccured in index j 
+        //? if the check is true then make the flag true
         for (int j = 0; j < checkwordcount; j++)
         {
             if(word[i] == wordoccured[j]) {
                 flag = true;
             }
         }
-        //if flag true then dont continue
-        //but if the flag false continue the below line
+        //? if flag true then dont continue and the main loop will increment by 1 and check again 
+        //? but if the flag false continue the below line
         if(flag) 
         continue;
         wordoccured[checkwordcount] = word[i];
@@ -162,10 +162,10 @@ int main()
                 occuredcount++;
             }
         }
-        //cout the word occurs
+        //? cout the word occurs
         cout << left << setw(10) << word[i] << " occurs " << occuredcount << " times.\n";
         totaloccurences += occuredcount;
-        //write the cout into a file
+        //? write the cout into a file
         newfile.open("CountWordFixed.txt", ios::app);
         if (newfile.is_open())
         {
@@ -174,7 +174,7 @@ int main()
             newfile.close();
         }
     }
-    //Output:
+    //? Output:
     cout << "Number of words: " << wordcount << endl;
     //cout << "Number of words: " << totaloccurences << endl;
     newfile.open("CountWordFixed.txt", ios::app);

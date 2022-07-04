@@ -129,6 +129,7 @@ int main()
     string tempwordcompare;
     int checkwordcount = 0;
     int totaloccurences = 0;
+    int totalword = 0;
     for (int i = 0; i < wordcount; i++)
     {
         tempcompare = word[i];
@@ -164,6 +165,7 @@ int main()
         }
         //? cout the word occurs
         cout << left << setw(10) << word[i] << " occurs " << occuredcount << " times.\n";
+        totalword += 1;
         totaloccurences += occuredcount;
         //? write the cout into a file
         newfile.open("CountWordFixed.txt", ios::app);
@@ -175,13 +177,14 @@ int main()
         }
     }
     //? Output:
+    cout << "Total words: " << totalword << endl;
     cout << "Number of words: " << wordcount << endl;
-    //cout << "Number of words: " << totaloccurences << endl;
     newfile.open("CountWordFixed.txt", ios::app);
     if (newfile.is_open())
     {
         newfile << endl << endl;
-        newfile << "Number of words: " << wordcount;
+        newfile << "Total words: " << totalword << endl;
+        newfile << "Number of words: " << wordcount << endl;
         //newfile << "Number of words: " << totaloccurences;
         newfile.close();
     }

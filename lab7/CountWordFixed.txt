@@ -17,4 +17,5 @@ im         occurs 1 times.
 sure       occurs 1 times.
 seashore   occurs 1 times.
 
+Total words: 16
 Number of words: 29

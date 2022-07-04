@@ -1,15 +1,20 @@
-To begin to toboggan first buy a toboggan but dont buy too big a toboggan Too big a toboggan is too big a toboggan to buy to begin to toboggan 
+She sells seashells by the sea shore The shells she sells are surely seashells So if she sells shells on the sea shore Im sure she sells seashore shells 
 
-to         occurs 5 times.
-begin      occurs 2 times.
-toboggan   occurs 6 times.
-first      occurs 1 times.
-buy        occurs 3 times.
-a          occurs 4 times.
-but        occurs 1 times.
-dont       occurs 1 times.
-too        occurs 3 times.
-big        occurs 3 times.
-is         occurs 1 times.
+she        occurs 4 times.
+sells      occurs 4 times.
+seashells  occurs 2 times.
+by         occurs 1 times.
+the        occurs 3 times.
+sea        occurs 2 times.
+shore      occurs 2 times.
+shells     occurs 3 times.
+are        occurs 1 times.
+surely     occurs 1 times.
+so         occurs 1 times.
+if         occurs 1 times.
+on         occurs 1 times.
+im         occurs 1 times.
+sure       occurs 1 times.
+seashore   occurs 1 times.
 
-Number of words: 30
+Number of words: 29

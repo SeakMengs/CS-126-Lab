@@ -93,23 +93,24 @@ int main()
     newfile.open("CountWordFixed.txt", ios::in);
     if (newfile.is_open())
     {
-    for (int j = 0; j < wordcount; j++)
-        {
-        newfile >> word[j];
-        tempword = word[j];  
-        for (int i = 0; i < tempword.size(); i++) {
-            if ((tempword[i] >= 'a' && tempword[i] <= 'z') || (tempword[i] >= 'A' && tempword[i] <= 'Z')) 
+        for (int j = 0; j < wordcount; j++)
             {
-                temp = temp + tempword[i];
+            newfile >> word[j];
+            tempword = word[j];  
+            for (int i = 0; i < tempword.size(); i++) 
+            {
+                if ((tempword[i] >= 'a' && tempword[i] <= 'z') || (tempword[i] >= 'A' && tempword[i] <= 'Z')) 
+                {
+                    temp = temp + tempword[i];
+                }
             }
-        }
-        word[j] = temp;
-        if (j < wordcount)
-        {
-            strconcat += word[j] + " ";
-        }
-        temp = "";
-        } 
+            word[j] = temp;
+            if (j < wordcount)
+            {
+                strconcat += word[j] + " ";
+            }
+            temp = "";
+            } 
         newfile.close();
     }
     //Write strconcat to newfile

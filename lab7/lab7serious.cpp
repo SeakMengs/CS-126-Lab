@@ -1,3 +1,4 @@
+//TODO scan for words and check for words occurred
 #include <iostream>
 #include <fstream>
 #include <cstring>
